@@ -14,37 +14,23 @@
 ;以下规则，按照从上往下的顺序遍历，优先命中上位规则，规则重复无影响
 ;修改顺序会影响分流效果
 
-;添加 DNS 配置部分
-dns=true
-doh3=true
-ipv6=true
-prefer-ip6=true
-dns-fallback=true
-dns-fallback-filter={"geoip":false,"ipcidr":["240.0.0.0/4","0.0.0.0/32"]}
-
-;添加 DNS 服务器配置
-dns-server=https://doh.pub/dns-query,https://dns.alidns.com/dns-query,223.5.5.5,119.29.29.29
-
-;添加 fallback DNS 服务器配置（通过代理访问）
-fallback-dns-server=https://1.1.1.1/dns-query,https://8.8.8.8/dns-query,https://dns.google/dns-query,tls://1.0.0.1:853,tls://8.8.4.4:853
-
-;添加 fake-ip 范围配置
-fake-ip-range=198.18.0.1/16
-fake-ip6-range=fc00::/18
-fake-ip-filter=*.lan,*.local,*.localdomain,*.example,*.invalid,*.localhost,*.test,*.onion,*.localhost,*.local,*.home.arpa,time.*.com,time.*.gov,time.*.edu.cn,time.*.apple.com,time1.*.com,time2.*.com,time3.*.com,time4.*.com,time5.*.com,time6.*.com,time7.*.com,ntp.*.com,ntp1.*.com,ntp2.*.com,ntp3.*.com,ntp4.*.com,ntp5.*.com,ntp6.*.com,ntp7.*.com,*.time.edu.cn,*.ntp.org.cn,+.pool.ntp.org,time1.cloud.tencent.com,music.163.com,*.music.163.com,*.126.net,musicapi.taihe.com,music.taihe.com,songsearch.kugou.com,trackercdn.kugou.com,*.kuwo.cn,api-jooxtt.sanook.com,api.joox.com,joox.com,y.qq.com,*.y.qq.com,streamoc.music.tc.qq.com,mobileoc.music.tc.qq.com,isure.stream.qqmusic.qq.com,dl.stream.qqmusic.qq.com,aqqmusic.tc.qq.com,amobile.music.tc.qq.com,*.xiami.com,*.music.migu.cn,music.migu.cn,*.msftconnecttest.com,*.msftncsi.com,msftconnecttest.com,msftncsi.com,localhost.ptlogin2.qq.com,localhost.sec.qq.com,+.srv.nintendo.net,+.stun.playstation.net,xbox.*.microsoft.com,+.xboxlive.com,*.battlenet.com.cn,*.battlenet.com,*.blzstatic.cn,*.battle.net
-
-;添加 DNS 查询策略
-enhanced-mode=fake-ip
-default-nameserver=223.5.5.5,119.29.29.29,8.8.8.8,1.1.1.1
-nameserver-policy={"geosite:cn,private":["https://doh.pub/dns-query","https://dns.alidns.com/dns-query"]}
-
 ruleset=🎯 全球直连,[]GEOSITE,private
 ruleset=🎯 全球直连,[]GEOIP,private,no-resolve
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Direct.list,28800
-ruleset=🚀 手动选择,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Proxy.list,28800
-ruleset=🚀 手动选择,[]DOMAIN-SUFFIX,ipinfo.io
-ruleset=🚀 手动选择,[]DOMAIN-SUFFIX,ipinfo.com
-ruleset=🚀 手动选择,[]DOMAIN-SUFFIX,ipinfo.org
+ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
+ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
+ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+ruleset=DIRECT,[]GEOIP,CN,no-resolve
+ruleset=🚀 节点选择,[]FINAL
+Custom_OpenClash_Rules/main/rule/Custom_Proxy.list,28800
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.list,28800
 ruleset=🎯 全球直连,[]GEOSITE,google-cn
 ruleset=🎯 全球直连,[]GEOSITE,category-games@cn
@@ -65,23 +51,6 @@ ruleset=🎯 全球直连,[]GEOIP,cn,no-resolve
 ruleset=🐟 漏网之鱼,[]FINAL
 ;设置规则标志位结束
 
-;设置节点分组标志位
-;节点地区分组参考本项目推荐机场而设立
-custom_proxy_group=🚀 手动选择`select`[]♻️ 自动选择`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`.*
-custom_proxy_group=♻️ 自动选择`url-test`.*`https://cp.cloudflare.com/generate_204`300,,50
-custom_proxy_group=📢 谷歌FCM`select`[]🚀 手动选择`[]♻️ 自动选择`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🎯 全球直连`.*
-custom_proxy_group=🇬 谷歌服务`select`[]🚀 手动选择`[]♻️ 自动选择`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🎯 全球直连`.*
-custom_proxy_group=🍎 苹果服务`select`[]🎯 全球直连`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🚀 手动选择`[]♻️ 自动选择`.*
-custom_proxy_group=Ⓜ️ 微软服务`select`[]🎯 全球直连`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🚀 手动选择`[]♻️ 自动选择`.*
-custom_proxy_group=🎮 游戏平台`select`[]🎯 全球直连`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🚀 手动选择`[]♻️ 自动选择`.*
-custom_proxy_group=🎮 Steam`select`[]🎯 全球直连`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🚀 手动选择`[]♻️ 自动选择`.*
-custom_proxy_group=🚀 测速工具`select`[]🎯 全球直连`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🚀 手动选择`[]♻️ 自动选择`.*
-custom_proxy_group=🐟 漏网之鱼`select`[]🚀 手动选择`[]♻️ 自动选择`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🎯 全球直连`.*
-custom_proxy_group=🇺🇸 美国节点`url-test`(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates)`https://cp.cloudflare.com/generate_204`300,,50
-custom_proxy_group=🇬🇧 英国节点`url-test`(英国|Great Britain)`https://cp.cloudflare.com/generate_204`300,,50
-custom_proxy_group=🇩🇪 德国节点`url-test`(德国|Germany|柏林|法兰克福)`https://cp.cloudflare.com/generate_204`300,,50
-custom_proxy_group=🎯 全球直连`select`[]DIRECT
-;设置分组标志位
 
 ;下方参数请勿修改
 enable_rule_generator=true
