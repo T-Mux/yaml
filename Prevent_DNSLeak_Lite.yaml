@@ -1,91 +1,99 @@
-;Custom_Clash_Rules
+;Custom_OpenClash_Rules
 ;全分组防 DNS 泄漏订阅转换模板
 ;作者：https://github.com/Aethersailor
-;项目地址：https://github.com/Aethersailor/Custom_Clash_Rules
-;该订阅模板为 Custom_OpenClash_Rules 项目的衍生项目
+;项目地址：https://github.com/Aethersailor/Custom_OpenClash_Rules
 ;基于 ACL4SSR 模板魔改而来，感谢原作者！
-
-;轻量版分流规则
-;仅包含基本的国内/国外分流功能，包含一些基本的直连规则，其余网站和IP全部代理
-;适合不需要解锁和分流需求的用户
+;<必须>搭配本项目配套教程，实现最佳化的 OpenClash 使用效果！
+;教程：https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%A1%88
+;有问题可提 issue，或者加入本项目 Telegram 群组进行讨论
+;Telegram 群组：https://t.me/custom_openclash_rules_group
+;Telegram 通知频道：https://t.me/custom_openclash_rules
 
 [custom]
 ;设置规则标志位
 ;以下规则，按照从上往下的顺序遍历，优先命中上位规则，规则重复无影响
 ;修改顺序会影响分流效果
 
-;添加 DNS 配置部分
-dns=true
-doh3=true
-ipv6=true
-prefer-ip6=true
-dns-fallback=true
-dns-fallback-filter={"geoip":false,"ipcidr":["240.0.0.0/4","0.0.0.0/32"]}
-
-;添加 DNS 服务器配置
-dns-server=https://doh.pub/dns-query,https://dns.alidns.com/dns-query,223.5.5.5,119.29.29.29
-
-;添加 fallback DNS 服务器配置（通过代理访问）
-fallback-dns-server=https://1.1.1.1/dns-query,https://8.8.8.8/dns-query,https://dns.google/dns-query,tls://1.0.0.1:853,tls://8.8.4.4:853
-
-;添加 fake-ip 范围配置
-fake-ip-range=198.18.0.1/16
-fake-ip6-range=fc00::/18
-fake-ip-filter=*.lan,*.local,*.localdomain,*.example,*.invalid,*.localhost,*.test,*.onion,*.localhost,*.local,*.home.arpa,time.*.com,time.*.gov,time.*.edu.cn,time.*.apple.com,time1.*.com,time2.*.com,time3.*.com,time4.*.com,time5.*.com,time6.*.com,time7.*.com,ntp.*.com,ntp1.*.com,ntp2.*.com,ntp3.*.com,ntp4.*.com,ntp5.*.com,ntp6.*.com,ntp7.*.com,*.time.edu.cn,*.ntp.org.cn,+.pool.ntp.org,time1.cloud.tencent.com,music.163.com,*.music.163.com,*.126.net,musicapi.taihe.com,music.taihe.com,songsearch.kugou.com,trackercdn.kugou.com,*.kuwo.cn,api-jooxtt.sanook.com,api.joox.com,joox.com,y.qq.com,*.y.qq.com,streamoc.music.tc.qq.com,mobileoc.music.tc.qq.com,isure.stream.qqmusic.qq.com,dl.stream.qqmusic.qq.com,aqqmusic.tc.qq.com,amobile.music.tc.qq.com,*.xiami.com,*.music.migu.cn,music.migu.cn,*.msftconnecttest.com,*.msftncsi.com,msftconnecttest.com,msftncsi.com,localhost.ptlogin2.qq.com,localhost.sec.qq.com,+.srv.nintendo.net,+.stun.playstation.net,xbox.*.microsoft.com,+.xboxlive.com,*.battlenet.com.cn,*.battlenet.com,*.blzstatic.cn,*.battle.net
-
-;添加 DNS 查询策略
-enhanced-mode=fake-ip
-default-nameserver=223.5.5.5,119.29.29.29,8.8.8.8,1.1.1.1
-nameserver-policy={"geosite:cn,private":["https://doh.pub/dns-query","https://dns.alidns.com/dns-query"]}
-
 ruleset=🎯 全球直连,[]GEOSITE,private
 ruleset=🎯 全球直连,[]GEOIP,private,no-resolve
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Direct.list,28800
-ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
-ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
-ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
-ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
-ruleset=🎯 全球直连,[]GEOIP,CN,no-resolve
-ruleset=🚀 节点选择,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Proxy.list,28800
+ruleset=🚀 手动选择,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Proxy.list,28800
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.list,28800
 ruleset=🎯 全球直连,[]GEOSITE,google-cn
 ruleset=🎯 全球直连,[]GEOSITE,category-games@cn
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Steam_CDN.list,28800
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Game_Download_CDN.list,28800
 ruleset=🎯 全球直连,[]GEOSITE,category-public-tracker
-ruleset=🚀 测速工具,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.list,28800
+ruleset=💬 即时通讯,[]GEOSITE,category-communication
+ruleset=🌐 社交媒体,[]GEOSITE,category-social-media-!cn
+ruleset=🤖 ChatGPT,[]GEOSITE,openai
+ruleset=🤖 Copilot,[]GEOSITE,bing
+ruleset=🤖 AI服务,[]GEOSITE,category-ai-!cn
+ruleset=🚀 GitHub,[]GEOSITE,github
+ruleset=🚀 测速工具,[]GEOSITE,category-speedtest
+ruleset=📹 YouTube,[]GEOSITE,youtube
+ruleset=🎥 AppleTV+,[]GEOSITE,apple-tvplus
 ruleset=🍎 苹果服务,[]GEOSITE,apple
 ruleset=Ⓜ️ 微软服务,[]GEOSITE,microsoft
 ruleset=📢 谷歌FCM,[]GEOSITE,googlefcm
 ruleset=🇬 谷歌服务,[]GEOSITE,google
-ruleset=🚀 节点选择,[]GEOSITE,gfw
+ruleset=🎶 TikTok,[]GEOSITE,tiktok
+ruleset=🎥 Netflix,[]GEOSITE,netflix
+ruleset=🎥 DisneyPlus,[]GEOSITE,disney
+ruleset=🎥 HBO,[]GEOSITE,hbo
+ruleset=🎥 PrimeVideo,[]GEOSITE,primevideo
+ruleset=🎥 Emby,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.list,28800
+ruleset=🎥 Emby,https://raw.githubusercontent.com/ddgksf2013/Filter/refs/heads/master/Emby.list,28800
+ruleset=🎻 Spotify,[]GEOSITE,spotify
+ruleset=📺 Bahamut,[]GEOSITE,bahamut
 ruleset=🎮 Steam,[]GEOSITE,steam
 ruleset=🎮 游戏平台,[]GEOSITE,category-games
+ruleset=🌎 国外媒体,[]GEOSITE,category-entertainment
+ruleset=🛒 国外电商,[]GEOSITE,category-ecommerce
+ruleset=🚀 手动选择,[]GEOSITE,gfw
+ruleset=💬 即时通讯,[]GEOIP,telegram,no-resolve
+ruleset=🌐 社交媒体,[]GEOIP,twitter,no-resolve
+ruleset=🌐 社交媒体,[]GEOIP,facebook,no-resolve
 ruleset=🇬 谷歌服务,[]GEOIP,google,no-resolve
+ruleset=🎥 Netflix,[]GEOIP,netflix,no-resolve
+;由于 OpenClash 使用的大陆白名单收录不全，此处留有 geosite:cn 作为国内域名兜底
 ruleset=🎯 全球直连,[]GEOSITE,cn
+;由于 OpenClash 使用的大陆白名单收录不全，此处留有 geoip:cn 作为国内 IP 兜底
 ruleset=🎯 全球直连,[]GEOIP,cn,no-resolve
+;以上兜底规则会根据实际情况随时取消
 ruleset=🐟 漏网之鱼,[]FINAL
 ;设置规则标志位结束
 
 ;设置节点分组标志位
-custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`.*
+;节点地区分组参考本项目推荐机场而设立
+custom_proxy_group=🚀 手动选择`select`[]♻️ 自动选择`.*
 custom_proxy_group=♻️ 自动选择`url-test`.*`https://cp.cloudflare.com/generate_204`300,,50
-custom_proxy_group=📢 谷歌FCM`select`[]🚀 节点选择`[]♻️ 自动选择`[]🎯 全球直连`.*
-custom_proxy_group=🇬 谷歌服务`select`[]🚀 节点选择`[]♻️ 自动选择`[]🎯 全球直连`.*
-custom_proxy_group=🍎 苹果服务`select`[]🎯 全球直连`[]🚀 节点选择`[]♻️ 自动选择`.*
-custom_proxy_group=Ⓜ️ 微软服务`select`[]🎯 全球直连`[]🚀 节点选择`[]♻️ 自动选择`.*
-custom_proxy_group=🎮 游戏平台`select`[]🎯 全球直连`[]🚀 节点选择`[]♻️ 自动选择`.*
-custom_proxy_group=🎮 Steam`select`[]🎯 全球直连`[]🚀 节点选择`[]♻️ 自动选择`.*
-custom_proxy_group=🚀 测速工具`select`[]🎯 全球直连`[]🚀 节点选择`[]♻️ 自动选择`.*
-custom_proxy_group=🛑 广告拦截`select`[]REJECT`[]DIRECT
-custom_proxy_group=🐟 漏网之鱼`select`[]🚀 节点选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=💬 即时通讯`select`[]♻️ 自动选择`[]🚀 手动选择
+custom_proxy_group=🌐 社交媒体`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🚀 GitHub`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连
+custom_proxy_group=🤖 ChatGPT`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🤖 Copilot`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=🤖 AI服务`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🎶 TikTok`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=📹 YouTube`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🎥 Netflix`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🎥 DisneyPlus`select`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🎥 HBO`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=🎥 PrimeVideo`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=🎥 AppleTV+`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=🎥 Emby`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🎻 Spotify`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=📺 Bahamut`select`[]🚀 手动选择`[]🎯 全球直连
+custom_proxy_group=🌎 国外媒体`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=🛒 国外电商`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
+custom_proxy_group=📢 谷歌FCM`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连
+custom_proxy_group=🇬 谷歌服务`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连
+custom_proxy_group=🍎 苹果服务`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择
+custom_proxy_group=Ⓜ️ 微软服务`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择
+custom_proxy_group=🎮 游戏平台`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择
+custom_proxy_group=🎮 Steam`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🚀 测速工具`select`[]🎯 全球直连`[]🚀 手动选择`[]♻️ 自动选择`.*
+custom_proxy_group=🐟 漏网之鱼`select`[]🚀 手动选择`[]♻️ 自动选择`[]🎯 全球直连`.*
 custom_proxy_group=🎯 全球直连`select`[]DIRECT
 ;设置分组标志位
 
