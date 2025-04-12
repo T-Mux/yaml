@@ -17,8 +17,8 @@
 ;添加 DNS 配置部分
 dns=true
 doh3=true
-ipv6=false
-prefer-ip6=false
+ipv6=true
+prefer-ip6=true
 dns-fallback=true
 dns-fallback-filter={"geoip":false,"ipcidr":["240.0.0.0/4","0.0.0.0/32"]}
 
