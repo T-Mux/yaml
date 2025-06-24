@@ -1,4 +1,4 @@
-# 将proxy-providers里面链接中的“订阅链接”替换即可
+# 将proxy-providers里面链接中的"订阅链接"替换即可
 
 mixed-port: 7890
 allow-lan: true
@@ -24,8 +24,8 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
-    filter: "(?i)(美国|us|英国|uk|gb|德国|de|germany|united)(?!.*3)"
-      # 匹配包含 US/USA/UK/United/GB/DE/Germany 的节点名称，且不包含“3”
+    filter: "(?i)(美国|us|英国|uk|gb|德国|de|germany|united|香港|hk|hong)(?!.*3)"
+      # 匹配包含 US/USA/UK/United/GB/DE/Germany/香港/HK/Hong 的节点名称，且不包含"3"
 
 
 dns:
@@ -59,6 +59,13 @@ proxies:
             
 proxy-groups:
     
+  - name: 🇭🇰 香港节点
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HK.png
+    include-all: true
+    filter: "(?i)(香港|hk|hong)"
+    proxies: []
+    
   - name: 🇬🇧 英国节点
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/UK.png
@@ -84,6 +91,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
     proxies: 
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -93,6 +101,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
     proxies:
       - DIRECT
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -102,6 +111,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
     proxies:
       - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇩🇪 德国节点
       
@@ -109,6 +119,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -118,6 +129,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
     proxies:
       - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇩🇪 德国节点
       
@@ -126,6 +138,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
     proxies:
       - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇩🇪 德国节点
 
@@ -133,6 +146,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -141,6 +155,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DisneyPlus.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -150,6 +165,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
     proxies:
       - DIRECT
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -159,6 +175,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
     proxies:
       - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇩🇪 德国节点
 
@@ -166,6 +183,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -181,6 +199,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_3.png
     proxies:
       - DIRECT
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -190,6 +209,25 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
     proxies:
       - DIRECT
+      - 🇭🇰 香港节点
+      - 🇬🇧 英国节点
+      - 🇺🇸 美国节点
+      - 🇩🇪 德国节点
+
+  - name: HSBC全球
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/UK.png
+    proxies:
+      - 🇬🇧 英国节点
+      - 🇭🇰 香港节点
+      - 🇺🇸 美国节点
+      - 🇩🇪 德国节点
+
+  - name: HSBC香港
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HK.png
+    proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -198,6 +236,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇬🇧 英国节点
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
@@ -313,6 +352,20 @@ rule-providers:
     interval: 86400
     
 rules:
+  # HSBC 分流规则 - 优先匹配
+  - DOMAIN-SUFFIX,hsbc.com.hk,HSBC香港
+  - DOMAIN-SUFFIX,hsbc.hk,HSBC香港
+  - DOMAIN-SUFFIX,rewardplus.com.hk,HSBC香港
+  - DOMAIN-SUFFIX,reward-plus.com.hk,HSBC香港
+  - DOMAIN-KEYWORD,hsbc.hk,HSBC香港
+  - DOMAIN-KEYWORD,rewardplus,HSBC香港
+  - DOMAIN-KEYWORD,reward-plus,HSBC香港
+  - DOMAIN-SUFFIX,hsbc.com,HSBC全球
+  - DOMAIN-SUFFIX,hsbc.co.uk,HSBC全球
+  - DOMAIN-SUFFIX,about.hsbc,HSBC全球
+  - DOMAIN-KEYWORD,hsbc,HSBC全球
+  
+  # 其他规则
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Twitter,X（Twitter）
