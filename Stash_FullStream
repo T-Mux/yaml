@@ -24,8 +24,13 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
+<<<<<<< Updated upstream
     filter: "(?i)(美国|us|英国|uk|gb|德国|de|germany|united|香港|hk|hong|新加坡|sg|singapore|狮城)(?!.*3)"
       # 匹配包含 US/USA/UK/United/GB/DE/Germany/香港/HK/Hong/新加坡/SG/Singapore 的节点名称，且不包含"3"
+=======
+    filter: "(?i)(美国|us|英国|uk|gb|德国|de|germany|united|香港|HongKong|HK|hk)(?!.*3)"
+      # 匹配包含 US/USA/UK/United/GB/DE/Germany 的节点名称，且不包含"3"
+>>>>>>> Stashed changes
 
 
 dns:
@@ -108,6 +113,13 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies: []
+
+  - name: 🇭🇰 香港节点
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    filter: "(?i)(香港|hongkong|hk)"
+    proxies: []
        
   - name: 国外网站
     type: select
@@ -134,6 +146,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇬🇧 英国节点
@@ -154,6 +167,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇬🇧 英国节点
@@ -164,6 +178,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇬🇧 英国节点
@@ -182,7 +197,7 @@ proxy-groups:
 
   - name: Disney+
     type: select
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DisneyPlus.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/DisneyPlus.png
     proxies:
       - 🇭🇰 香港节点
       - 🇬🇧 英国节点
@@ -215,6 +230,7 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
     proxies:
+      - 🇭🇰 香港节点
       - 🇺🇸 美国节点
       - 🇭🇰 香港节点
       - 🇬🇧 英国节点
@@ -230,6 +246,16 @@ proxy-groups:
       - 🇺🇸 美国节点
       - 🇩🇪 德国节点
       - 🇸🇬 新加坡节点
+
+  - name: 银行服务
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇬🇧 英国节点
+      - 🇺🇸 美国节点
+      - 🇩🇪 德国节点
+      - DIRECT
 
   - name: 网易音乐
     type: select
@@ -398,7 +424,7 @@ rule-providers:
     url: "https://ghproxy.link/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Domain.txt"
     path: ./ruleset/Global-Domain.yaml
     interval: 86400
-    
+
 rules:
   # HSBC 分流规则 - 优先匹配
   - DOMAIN-SUFFIX,hsbc.com.hk,HSBC香港
@@ -456,6 +482,15 @@ rules:
   - RULE-SET,NetEaseMusic,网易音乐
   - RULE-SET,BiliBili,哔哩哔哩
   - RULE-SET,Game,游戏平台
+  - DOMAIN-SUFFIX,hsbc.com.hk,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,hsbc.com,🇬🇧 英国节点
+  - DOMAIN-SUFFIX,hsbcnet.com,银行服务
+  - DOMAIN-SUFFIX,rewards-plus.com,银行服务
+  - DOMAIN-SUFFIX,rewardsplus.com,银行服务
+  - DOMAIN-SUFFIX,reward-u.com,银行服务
+  - DOMAIN-SUFFIX,rewardu.com,银行服务
+  - DOMAIN-KEYWORD,hsbc,银行服务
+  - DOMAIN-KEYWORD,reward,银行服务
   - RULE-SET,OtherProxy,国外网站
   - RULE-SET,Global,国外网站
   - RULE-SET,China,国内网站
