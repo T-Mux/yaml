@@ -1,21 +1,5 @@
 [custom]
 ;解决DNS泄露，无分流群组
-dns-direct-fallback-proxy=true
-dns-direct-system=true
-dns-direct-fallback-system=true
-dns-fake-ip-filter-geosite=cn
-dns-fake-ip-filter-geoip=cn
-dns-fake-ip-filter=*.hsbc.com
-dns-fake-ip-filter=*.hsbc.com.hk
-dns-fake-ip-filter=*.hsbc.co.uk
-dns-fake-ip-filter=*.hsbcnet.com
-dns-fake-ip-filter=*.hsbc.com.*
-dns-fake-ip-filter=*.rewardplus.com.hk
-dns-fake-ip-filter=*.rewards-plus.com
-dns-fake-ip-filter=*.rewardsplus.com
-dns-fake-ip-filter=*.reward-u.com
-dns-fake-ip-filter=*.rewardu.com
-
 ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
 ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
@@ -28,29 +12,29 @@ ruleset=📢 谷歌服务,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=🐦 Twitter,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list
 ruleset=📱 Telegram,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Telegram.list
 ruleset=🤖 ChatGPT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list
-ruleset=🇭🇰 香港节点,[]DOMAIN-SUFFIX,hsbc.com.hk
-ruleset=🇭🇰 香港节点,[]DOMAIN,rewardplus.hsbc.com.hk
-ruleset=🇬🇧 英国节点,[]DOMAIN-SUFFIX,hsbc.com
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
 ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
 ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
 ruleset=DIRECT,[]GEOIP,CN,no-resolve
 ruleset=🚀 节点选择,[]FINAL
+;HSBC Rules
+ruleset=🏦 汇丰香港,[]DOMAIN-SUFFIX,hsbc.com.hk
+ruleset=🏦 汇丰香港,[]DOMAIN,rewardplus.hsbc.com.hk
+ruleset=🏦 汇丰环球,[]DOMAIN-SUFFIX,hsbc.com
 
-custom_proxy_group=🚀 节点选择`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`[]DIRECT`.*
-custom_proxy_group=🇺🇸 美国节点`select`(美|美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)
-custom_proxy_group=🇬🇧 英国节点`select`(英|英国|英|伦敦|UK|United Kingdom)
-custom_proxy_group=🇩🇪 德国节点`select`(德|德国|德|法兰克福|DE|Germany)
-custom_proxy_group=🇭🇰 香港节点`select`(港|香港|HK|Hong Kong)
-custom_proxy_group=📢 谷歌服务`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`.*
-custom_proxy_group=📹 YouTube`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`.*
-custom_proxy_group=Ⓜ️ 微软服务`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`[]DIRECT`.*
-custom_proxy_group=🍎 苹果服务`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`[]DIRECT`.*
-custom_proxy_group=🐦 Twitter`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`.*
-custom_proxy_group=📱 Telegram`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`[]🇭🇰 香港节点`.*
-custom_proxy_group=🤖 ChatGPT`select`[]🇺🇸 美国节点`[]🇬🇧 英国节点`[]🇩🇪 德国节点`.*
+custom_proxy_group=🚀 节点选择`select`.*
+custom_proxy_group=📢 谷歌服务`select`[]🚀 节点选择`.*
+custom_proxy_group=📹 YouTube`select`[]🚀 节点选择`.*
+custom_proxy_group=Ⓜ️ 微软服务`select`[]🚀 节点选择`.*
+custom_proxy_group=🍎 苹果服务`select`[]🚀 节点选择`.*
+custom_proxy_group=🐦 Twitter`select`[]🚀 节点选择`.*
+custom_proxy_group=📱 Telegram`select`[]🚀 节点选择`.*
+custom_proxy_group=🤖 ChatGPT`select`[]🚀 节点选择`.*
+custom_proxy_group=🏦 汇丰香港`select`[]🚀 节点选择`.*
+custom_proxy_group=🏦 汇丰环球`select`[]🚀 节点选择`.*
 
 enable_rule_generator=true
 overwrite_original_rules=true
