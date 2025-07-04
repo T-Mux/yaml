@@ -1,5 +1,21 @@
 [custom]
 ;解决DNS泄露，无分流群组
+dns-direct-fallback-proxy=true
+dns-direct-system=true
+dns-direct-fallback-system=true
+dns-fake-ip-filter-geosite=cn
+dns-fake-ip-filter-geoip=cn
+dns-fake-ip-filter=*.hsbc.com
+dns-fake-ip-filter=*.hsbc.com.hk
+dns-fake-ip-filter=*.hsbc.co.uk
+dns-fake-ip-filter=*.hsbcnet.com
+dns-fake-ip-filter=*.hsbc.com.*
+dns-fake-ip-filter=*.rewardplus.com.hk
+dns-fake-ip-filter=*.rewards-plus.com
+dns-fake-ip-filter=*.rewardsplus.com
+dns-fake-ip-filter=*.reward-u.com
+dns-fake-ip-filter=*.rewardu.com
+
 ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
 ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
