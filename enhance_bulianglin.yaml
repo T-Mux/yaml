@@ -12,6 +12,7 @@ ruleset=📢 谷歌服务,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=🐦 Twitter,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list
 ruleset=📱 Telegram,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Telegram.list
 ruleset=🤖 ChatGPT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list
+ruleset=🎵 Spotify,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Spotify.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
 ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
@@ -31,6 +32,7 @@ custom_proxy_group=🍎 苹果服务`select`[]自动选择`[]🚀 节点选择`.
 custom_proxy_group=🐦 Twitter`select`[]自动选择`[]🚀 节点选择`.*
 custom_proxy_group=📱 Telegram`select`[]自动选择`[]🚀 节点选择`.*
 custom_proxy_group=🤖 ChatGPT`select`[]自动选择`[]🚀 节点选择`.*
+custom_proxy_group=🎵 Spotify`select`[]自动选择`[]🚀 节点选择`.*
 
 enable_rule_generator=true
 overwrite_original_rules=true
