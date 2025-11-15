@@ -1,0 +1,16 @@
+version: 1
+name: Ads-Block
+meta:
+  description: "Block ads using MetaCubeX category-ads-all ruleset"
+
+patch:
+  rule-providers:
+    category-ads-all:
+      type: http
+      behavior: domain
+      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml"
+      interval: 86400
+      path: ./rules/category-ads-all.yaml
+
+  rules:
+    - RULE-SET,category-ads-all,REJECT
